@@ -1,0 +1,59 @@
+<mat-toolbar color="accent">
+    <span class="title-center">Hotel</span>
+</mat-toolbar>
+
+  <div class="container mat-elavation-z8">
+    <mat-form-field>
+      <input matInput placeHolder="Pretraga hotela" name="filter" (keyup)="applyFilter($event)"/>
+    </mat-form-field>
+    <mat-table #table [dataSource]="dataSource" class="mat-cell" matSort>
+      <!--Naziv-->
+      <ng-container matColumnDef="naziv">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >Naziv</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.naziv }}</mat-cell>
+      </ng-container>
+      <!--ID-->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >ID</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+      </ng-container>
+      <!-- BrojZvezdica -->
+      <ng-container matColumnDef="brojZvezdica">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >BrojZvezdica</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.brojZvezdica }}</mat-cell>
+      </ng-container>
+      <!-- Opis -->
+      <ng-container matColumnDef="opis">
+        <mat-header-cell *matHeaderCellDef>Opis</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.opis }}</mat-cell>
+      </ng-container>
+      <!-- Destinacija -->
+      <ng-container matColumnDef="destinacija">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Destinacija</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.destinacija.mesto }}</mat-cell>
+      </ng-container>
+      <!-- Action Buttons -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="accent" (click)="openDialog(1)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index">
+          <button mat-icon-button color="primary" (click)="openDialog(2,row.id, row.naziv, row.brojZvezdica, row.opis,row.destinacija)">
+            <mat-icon color="primary" aria-label="Edit">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="openDialog(3,row.id, row.naziv, row.brojZvezdica, row.opis,row.destinacija)">
+            <mat-icon color= "warn" aria-label="Delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row
+        style="cursor: pointer;"
+        *matRowDef="let row; columns: displayedColumns">
+      </mat-row>
+    </mat-table>
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5,10,20]"></mat-paginator>
+  </div>
+  

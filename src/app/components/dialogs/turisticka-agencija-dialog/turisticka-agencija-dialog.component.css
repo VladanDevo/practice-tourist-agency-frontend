@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 420px;
+  }
+  
+  .form {
+    display: flex;
+  }
+  
+  .form-field{
+    text-align: center;
+    margin-left: 44px;
+    margin-right: 44px;
+  }
+  
+  .mat-dialog-actions{
+    margin-top: 20px;
+  }
+  
+  .mat-form-field {
+    font-size: 16px;
+    flex-grow: 1;
+  }
+  
+  h3{
+    text-align: center;
+  }

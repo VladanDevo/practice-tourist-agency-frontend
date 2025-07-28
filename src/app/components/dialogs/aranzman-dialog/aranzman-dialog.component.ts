@@ -8,6 +8,8 @@ import { AranzmanService } from 'src/app/services/aranzman.service';
 import { TuristickaAgencija } from 'src/app/models/turisticka-agencija';
 import { TuristickaAgencijaService } from 'src/app/services/turisticka-agencija.service';
 
+// Testing pipeline #1
+
 @Component({
   selector: 'app-aranzman-dialog',
   templateUrl: './aranzman-dialog.component.html',
